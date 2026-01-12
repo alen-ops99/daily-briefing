@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alen's Daily Briefing - 2026-01-11</title>
+    <style>
+        :root {
+            --croatia: #3b82f6;
+            --world: #10b981;
+            --markets: #f59e0b;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0 20px;
+            border-bottom: 1px solid #334155;
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .date-info { text-align: right; color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Market Ticker */
+        .market-ticker {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .market-group { display: flex; gap: 15px; align-items: center; }
+        .market-group-label { font-size: 0.7rem; color: #64748b; text-transform: uppercase; }
+
+        .ticker-item { display: flex; align-items: center; gap: 8px; }
+        .ticker-name { font-size: 0.8rem; color: var(--text-muted); }
+        .ticker-change {
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .ticker-change.up { background: rgba(34,197,94,0.15); color: #4ade80; }
+        .ticker-change.down { background: rgba(239,68,68,0.15); color: #f87171; }
+
+        /* Section Title */
+        .section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        /* Top Headlines Grid */
+        .headlines-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .headline-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 18px;
+            border-left: 3px solid;
+        }
+
+        .headline-card.croatia { border-left-color: var(--croatia); }
+        .headline-card.world { border-left-color: var(--world); }
+        .headline-card.markets { border-left-color: var(--markets); }
+
+        .category-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 3px 6px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        .category-tag.croatia { background: rgba(59,130,246,0.2); color: var(--croatia); }
+        .category-tag.world { background: rgba(16,185,129,0.2); color: var(--world); }
+        .category-tag.markets { background: rgba(245,158,11,0.2); color: var(--markets); }
+
+        .headline-card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .headline-card .summary {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .headline-card .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+        }
+
+        .headline-card .source { color: #64748b; }
+        .headline-card a { color: #60a5fa; text-decoration: none; }
+        .headline-card a:hover { text-decoration: underline; }
+
+        /* More News Columns */
+        .more-news {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .news-column {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .column-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid;
+        }
+
+        .column-title.croatia { border-bottom-color: var(--croatia); }
+        .column-title.world { border-bottom-color: var(--world); }
+        .column-title.markets { border-bottom-color: var(--markets); }
+
+        .news-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        .news-item:last-child { border-bottom: none; }
+
+        .news-item h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .news-item h4 a { color: var(--text); text-decoration: none; }
+        .news-item h4 a:hover { color: #60a5fa; }
+
+        .news-item .summary { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
+        .news-item .source { font-size: 0.75rem; color: #64748b; margin-top: 6px; }
+
+        .topic-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-bottom: 6px;
+            background: rgba(148, 163, 184, 0.15);
+            color: #94a3b8;
+        }
+
+        .topic-tag.policy { background: rgba(139, 92, 246, 0.2); color: #a78bfa; }
+        .topic-tag.business { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .topic-tag.economy { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .topic-tag.health { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .topic-tag.tech { background: rgba(6, 182, 212, 0.2); color: #22d3ee; }
+        .topic-tag.security { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+        .topic-tag.energy { background: rgba(251, 146, 60, 0.2); color: #fb923c; }
+        .topic-tag.trade { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .topic-tag.finance { background: rgba(99, 102, 241, 0.2); color: #818cf8; }
+        .topic-tag.climate { background: rgba(20, 184, 166, 0.2); color: #2dd4bf; }
+        .topic-tag.science { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+        .topic-tag.conflict { background: rgba(220, 38, 38, 0.2); color: #ef4444; }
+        .topic-tag.diplomacy { background: rgba(79, 70, 229, 0.2); color: #a5b4fc; }
+
+        /* Top News of the Day */
+        .top-news {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d1f47 100%);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 25px;
+            border: 1px solid #3b4f6b;
+        }
+
+        .top-news-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #fbbf24;
+            margin-bottom: 12px;
+        }
+
+        .top-news h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .top-news .summary {
+            font-size: 1rem;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .top-news .reason {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .top-news .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .top-news .source { color: #64748b; }
+        .top-news a { color: #60a5fa; text-decoration: none; font-weight: 500; }
+        .top-news a:hover { text-decoration: underline; }
+
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            color: #475569;
+            font-size: 0.75rem;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .headlines-grid, .more-news { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 15px; }
+            header { flex-direction: column; gap: 10px; text-align: center; }
+            .date-info { text-align: center; }
+            .market-ticker { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Alen's Daily Briefing</div>
+            <div class="date-info">
+                <div>Sunday, January 11, 2026</div>
+                <div>09:22 PM</div>
+            </div>
+        </header>
+
+        
+        <div class="market-ticker">
+            
+            <div class="market-group">
+                <span class="market-group-label">US</span>
+                
+                <div class="ticker-item">
+                    <span class="ticker-name">Dow Jones</span>
+                    <span class="ticker-change up">+0.48%</span>
+                </div>
+                
+                <div class="ticker-item">
+                    <span class="ticker-name">S&P 500</span>
+                    <span class="ticker-change up">+0.65%</span>
+                </div>
+                
+                <div class="ticker-item">
+                    <span class="ticker-name">Nasdaq</span>
+                    <span class="ticker-change up">+0.81%</span>
+                </div>
+                
+            </div>
+            
+            
+            <div class="market-group">
+                <span class="market-group-label">EU</span>
+                
+                <div class="ticker-item">
+                    <span class="ticker-name">FTSE 100</span>
+                    <span class="ticker-change up">+0.80%</span>
+                </div>
+                
+                <div class="ticker-item">
+                    <span class="ticker-name">DAX</span>
+                    <span class="ticker-change up">+0.53%</span>
+                </div>
+                
+                <div class="ticker-item">
+                    <span class="ticker-name">CAC 40</span>
+                    <span class="ticker-change up">+0.00%</span>
+                </div>
+                
+            </div>
+            
+            
+            <div class="market-group">
+                <span class="market-group-label">Asia</span>
+                
+                <div class="ticker-item">
+                    <span class="ticker-name">Nikkei</span>
+                    <span class="ticker-change up">+1.61%</span>
+                </div>
+                
+                <div class="ticker-item">
+                    <span class="ticker-name">Hang Seng</span>
+                    <span class="ticker-change up">+0.10%</span>
+                </div>
+                
+            </div>
+            
+            
+            <div class="market-group">
+                <span class="market-group-label">Other</span>
+                
+                <div class="ticker-item">
+                    <span class="ticker-name">VIX</span>
+                    <span class="ticker-change down">14.49</span>
+                </div>
+                
+                <div class="ticker-item">
+                    <span class="ticker-name">10Y Treasury</span>
+                    <span class="ticker-change down">4.17%</span>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+
+        
+        <div class="top-news">
+            <span class="top-news-label">Top News of the Day</span>
+            <h2>Iran warns it will retaliate if US attacks, as hundreds killed in protests</h2>
+            <p class="summary">Iran warns of retaliation if attacked as protests continue with hundreds killed.</p>
+            
+            <p class="reason">The story about Iran warning it will retaliate if the US attacks, as hundreds have been killed in protests, has the greatest global impact and historical significance, as it involves tensions between major world powers and a rapidly unfolding crisis that could have significant geopolitical and economic implications.</p>
+            
+            <div class="meta">
+                <span class="source">BBC World · World</span>
+                <a href="https://www.bbc.com/news/articles/cm2jek15m8no?at_medium=RSS&at_campaign=rss" target="_blank">Read full story →</a>
+            </div>
+        </div>
+        
+
+        <div class="section-title">Top Headlines</div>
+        <div class="headlines-grid">
+            
+            <div class="headline-card croatia">
+                <span class="category-tag croatia">Croatia</span>
+                <h3>Šef NATO-a sutra stiže u Hrvatsku. Predstavit će mu borbeno plovilo</h3>
+                <p class="summary">GLAVNOM tajniku NATO-a Marku Rutteu bit će predstavljen adut hrvatske obrambene industrije: borbeno plovilo tvrtke Shadows Nautics s raketnim sustavom, koje nudi svjetsku kvalitetu po nižoj cijeni.</p>
+                <div class="meta">
+                    <span class="source">Index.hr</span>
+                    <a href="https://www.index.hr/vijesti/clanak/sef-natoa-sutra-stize-u-hrvatsku-predstavit-ce-mu-borbeno-plovilo/2748919.aspx" target="_blank">Read more</a>
+                </div>
+            </div>
+            
+
+            
+            <div class="headline-card world">
+                <span class="category-tag world">World</span>
+                <h3>Iran warns it will retaliate if US attacks, as hundreds killed in protests</h3>
+                <p class="summary">Iran warns of retaliation if attacked as protests continue with hundreds killed.</p>
+                <div class="meta">
+                    <span class="source">BBC World</span>
+                    <a href="https://www.bbc.com/news/articles/cm2jek15m8no?at_medium=RSS&at_campaign=rss" target="_blank">Read more</a>
+                </div>
+            </div>
+            
+
+            
+            <div class="headline-card markets">
+                <span class="category-tag markets">Markets</span>
+                <h3>Trump revealed some of Friday's jobs data early in post the prior day</h3>
+                <p class="summary">President Trump revealed private sector payrolls expanded by 654,000 in December, ahead of the official jobs report.</p>
+                <div class="meta">
+                    <span class="source">CNBC Economy</span>
+                    <a href="https://www.cnbc.com/2026/01/09/trump-revealed-jobs-data-early.html" target="_blank">Read more</a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="section-title">More News</div>
+        <div class="more-news">
+            <div class="news-column">
+                <div class="column-title croatia">Croatia</div>
+                
+                <div class="news-item">
+                    <span class="topic-tag conflict">Conflict</span>
+                    <h4><a href="https://www.index.hr/vijesti/clanak/dorh-podigao-optuznicu-glavnom-uredniku-morskihr-prijetili-otmicom-i-ubojstvom/2748929.aspx" target="_blank">DORH podigao optužnicu: Glavnom uredniku Morski.hr prijetili otmicom i ubojstvom</a></h4>
+                    <p class="summary">DRŽAVNO odvjetništvo podiglo je optužnicu protiv trojice brodara zbog prijetnji otmicom i ubojstvom uredniku portala Morski HR, Jurici Gašparu, nakon njegovog izvještavanja o devastaciji obale.</p>
+                    <div class="source">Index.hr</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag security">Security</span>
+                    <h4><a href="https://www.index.hr/vijesti/clanak/u-whatsapp-grupama-sire-se-snimke-sukoba-u-dubravi-dvojica-se-potukla-na-parkingu/2748902.aspx" target="_blank">U WhatsApp grupama šire se snimke sukoba u Dubravi: Dvojica se potukli na parkingu</a></h4>
+                    <p class="summary">PROMETNA nesuglasica u zagrebačkoj Dubravi eskalirala je u tučnjavu dvojice muškaraca gdje je auto udario jednog, a obojica su uhićena.</p>
+                    <div class="source">Index.hr</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag policy">Policy</span>
+                    <h4><a href="https://www.jutarnji.hr/vijesti/hrvatska/umirovljenici-rade-nova-pravila-povecanje-mirovina-ukidanje-penalizacije-invalidske-uskladivanje-15660893" target="_blank">Povećavaju se mirovine, šef Zavoda za mirovinsko osiguranje otkrio kada. A stižu i nova pravila za r</a></h4>
+                    <p class="summary">Tužna je realnost hrvatskog umirovljenika koji moraju raditi kako bi preživjeli, jer su im mirovine male. Što ih čeka u budućnosti, za RTL Danas je govorio Ivan Serdar, ravnatelj Hrvatskog zavoda za mirovinsko osiguranje, a intervju niže pročitajte u</p>
+                    <div class="source">Jutarnji list</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag economy">Economy</span>
+                    <h4><a href="https://www.jutarnji.hr/vijesti/hrvatska/apn-priustivi-najam-slabi-odaziv-vlasnici-cekaju-porezne-signale-15660877" target="_blank">Rok istječe 15.2., vlasnici ne žure u posao s državom, a brojke se skrivaju: 'Za stan na Trešnjevci </a></h4>
+                    <p class="summary">Agencija za pravni promet i posredovanje nekretninama (APN) raspisala je 18. prosinca javni poziv u sklopu programa priuštivog najma za vlasnike stambenih jedinica koji žele svoju nekretninu dati državi za dugoročni najam podstanarima, a nakon nešto </p>
+                    <div class="source">Jutarnji list</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag policy">Policy</span>
+                    <h4><a href="https://www.jutarnji.hr/vijesti/hrvatska/biljana-romic-mirovina-oprostaj-hrt-poruka-maje-sever-15660843" target="_blank">S HRT-a odlazi još jedna dugogodišnja novinarka: 'Bez sata s ugraviranom zahvalom firme...'</a></h4>
+                    <p class="summary">HRT-ova novinarka Maja Sever oglasila se na Facebooku kako bi se oprostila od još jedne svoje drage kolegice koja odlazi s javne televizije. Naime, objavila je da u mirovinu odlazi dugogodišnja HRT-ova novinarka Biljana Romić. - Bilja ide u penziju.</p>
+                    <div class="source">Jutarnji list</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag policy">Policy</span>
+                    <h4><a href="https://www.jutarnji.hr/kultura/film-i-televizija/lupili-smo-i-po-hrvatima-i-srbima-volio-bih-da-i-thompson-ovo-pogleda-spominjemo-ga-tri-puta-15660836" target="_blank">'Lupili smo i po Hrvatima i Srbima, volio bih da i Thompson ovo pogleda. Spominjemo ga tri puta...'</a></h4>
+                    <p class="summary">Redatelj Igor Šeregi u današnjoj je emisiji Aleksandra Stankovića, "Nedjeljom u dva" na HTV-u govorio o novoj komediji "Svadba", priči o braku Hrvatice i Srbina, njihovim roditeljima i svadbi. U emisiji su sudjelovali i glumci Rene Bitorajac i Dragan</p>
+                    <div class="source">Jutarnji list</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag policy">Policy</span>
+                    <h4><a href="https://www.jutarnji.hr/scena/domace-zvijezde/zlatni-studio-2025-kviz-nagrada-15660835" target="_blank">Koliko znate o Zlatnom Studiju? Testirajte svoje znanje prije dodjele najveće medijske nagrade u zem</a></h4>
+                    <p class="summary">Glazbenicima, njihovim pjesmama, glumcima, filmovima i kazališnim predstavama, serijama i zabavnim programima, radijskim i televizijskim emisijama, voditeljima i novinarima koji su, po vašem mišljenju, obilježili 2025. godinu, dodijelit će se prestiž</p>
+                    <div class="source">Jutarnji list</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag security">Security</span>
+                    <h4><a href="https://www.index.hr/vijesti/clanak/u-whatsapp-grupama-sire-se-snimke-sukoba-u-dubravi-dvojica-se-potukla-na-parkingu/2748902.aspx" target="_blank">U WhatsApp grupama šire se snimke sukoba u Dubravi: Dvojica se potukli na parkingu</a></h4>
+                    <p class="summary">PROMETNA nesuglasica u zagrebačkoj Dubravi eskalirala je u tučnjavu dvojice muškaraca gdje je auto udario jednog, a obojica su uhićena.</p>
+                    <div class="source">Index.hr</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag conflict">Conflict</span>
+                    <h4><a href="https://www.index.hr/vijesti/clanak/dorh-podigao-optuznicu-glavnom-uredniku-morskihr-prijetili-otmicom-i-ubojstvom/2748929.aspx" target="_blank">DORH podigao optužnicu: Glavnom uredniku Morski.hr prijetili otmicom i ubojstvom</a></h4>
+                    <p class="summary">DRŽAVNO odvjetništvo podiglo je optužnicu protiv trojice brodara zbog prijetnji otmicom i ubojstvom uredniku portala Morski HR, Jurici Gašparu, nakon njegovog izvještavanja o devastaciji obale.</p>
+                    <div class="source">Index.hr</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag policy">Policy</span>
+                    <h4><a href="https://www.jutarnji.hr/vijesti/hrvatska/umirovljenici-rade-nova-pravila-povecanje-mirovina-ukidanje-penalizacije-invalidske-uskladivanje-15660893" target="_blank">Povećavaju se mirovine, šef Zavoda za mirovinsko osiguranje otkrio kada. A stižu i nova pravila za r</a></h4>
+                    <p class="summary">Tužna je realnost hrvatskog umirovljenika koji moraju raditi kako bi preživjeli, jer su im mirovine male. Što ih čeka u budućnosti, za RTL Danas je govorio Ivan Serdar, ravnatelj Hrvatskog zavoda za mirovinsko osiguranje, a intervju niže pročitajte u</p>
+                    <div class="source">Jutarnji list</div>
+                </div>
+                
+            </div>
+
+            <div class="news-column">
+                <div class="column-title world">World</div>
+                
+                <div class="news-item">
+                    <span class="topic-tag diplomacy">Diplomacy</span>
+                    <h4><a href="https://www.bbc.com/news/articles/cx2kv2gn62vo?at_medium=RSS&at_campaign=rss" target="_blank">Trump tells Cuba to 'make a deal, before it is too late'</a></h4>
+                    <p class="summary">Trump shifts focus to Cuba amid efforts to seize Venezuelan leader Maduro.</p>
+                    <div class="source">BBC World</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag policy">Policy</span>
+                    <h4><a href="https://www.bbc.com/news/articles/cvgpnwnqygro?at_medium=RSS&at_campaign=rss" target="_blank">Thousands march and dozens arrested in Minneapolis protests against ICE</a></h4>
+                    <p class="summary">Continued protests in Minneapolis and across the US after Renee Good's death.</p>
+                    <div class="source">BBC World</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag climate">Climate</span>
+                    <h4><a href="https://www.bbc.com/news/articles/c75xdg2p36lo?at_medium=RSS&at_campaign=rss" target="_blank">One person dead and 300 buildings destroyed in Australia bushfires</a></h4>
+                    <p class="summary">State of emergency declared in Victoria as wildfires rage in Australia.</p>
+                    <div class="source">BBC World</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag travel">Travel</span>
+                    <h4><a href="https://www.bbc.com/news/articles/c74vnxlvl40o?at_medium=RSS&at_campaign=rss" target="_blank">Thousands of tourists stranded in Lapland as cold grounds flights</a></h4>
+                    <p class="summary">Flights cancelled in northern Finland due to extreme cold temperatures.</p>
+                    <div class="source">BBC World</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag disaster">Disaster</span>
+                    <h4><a href="https://www.bbc.com/news/articles/c4gr7nlx421o?at_medium=RSS&at_campaign=rss" target="_blank">Bride and groom killed by gas explosion day after Pakistan wedding</a></h4>
+                    <p class="summary">Gas cylinder explosion kills 8 people the day after a wedding in Pakistan.</p>
+                    <div class="source">BBC World</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag conflict">Conflict</span>
+                    <h4><a href="https://www.bbc.com/news/articles/ckgn5g90lggo?at_medium=RSS&at_campaign=rss" target="_blank">Sudan's government returns to capital after nearly 3 years of war</a></h4>
+                    <p class="summary">Military-backed government returns to Khartoum after conflict with paramilitary group.</p>
+                    <div class="source">BBC World</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag security">Security</span>
+                    <h4><a href="https://www.bbc.com/news/articles/cly9597r4qpo?at_medium=RSS&at_campaign=rss" target="_blank">US military strikes Islamic State group targets in Syria, officials say</a></h4>
+                    <p class="summary">US carries out airstrikes against ISIS targets in Syria on Trump's orders.</p>
+                    <div class="source">BBC World</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag conflict">Conflict</span>
+                    <h4><a href="https://www.bbc.com/news/articles/cx2p84xleg2o?at_medium=RSS&at_campaign=rss" target="_blank">Last Kurdish forces leave Aleppo after ceasefire deal reached</a></h4>
+                    <p class="summary">Kurdish forces withdraw from Aleppo after ceasefire agreement.</p>
+                    <div class="source">BBC World</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag health">Health</span>
+                    <h4><a href="https://www.bbc.com/news/articles/c0lx09e618yo?at_medium=RSS&at_campaign=rss" target="_blank">Author Chimamanda Ngozi Adichie's family accuse hospital of negligence over son's death</a></h4>
+                    <p class="summary">Adichie's family alleges medical negligence in their son's death at a Lagos hospital.</p>
+                    <div class="source">BBC World</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag disaster">Disaster</span>
+                    <h4><a href="https://www.bbc.com/news/articles/cn42jqlqy4xo?at_medium=RSS&at_campaign=rss" target="_blank">Rescuers race to find dozens missing in deadly Philippines landfill collapse</a></h4>
+                    <p class="summary">Deadly landslide at landfill site in the Philippines leaves dozens missing.</p>
+                    <div class="source">BBC World</div>
+                </div>
+                
+            </div>
+
+            <div class="news-column">
+                <div class="column-title markets">Markets</div>
+                
+                <div class="news-item">
+                    <span class="topic-tag economy">Economy</span>
+                    <h4><a href="https://www.cnbc.com/2026/01/09/jobs-report-december-2025.html" target="_blank">U.S. payrolls rose 50,000 in December, less than expected; unemployment rate falls to 4.4%</a></h4>
+                    <p class="summary">The December jobs report showed mixed signals, with weak hiring but a decline in the unemployment rate.</p>
+                    <div class="source">CNBC Economy</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag economy">Economy</span>
+                    <h4><a href="https://www.cnbc.com/2026/01/08/the-december-jobs-report-is-due-out-friday-what-its-expected-to-show.html" target="_blank">The December jobs report is due out Friday. Here's what it is expected to show</a></h4>
+                    <p class="summary">Nonfarm payrolls likely rose by 73,000 in December, while the unemployment rate edged lower to 4.5%.</p>
+                    <div class="source">CNBC Economy</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag policy">Policy</span>
+                    <h4><a href="https://www.cnbc.com/2026/01/08/the-supreme-court-may-rule-friday-on-trumps-tariffs-heres-whats-at-stake-for-the-economy.html" target="_blank">Supreme Court holds off on Trump tariff ruling for now — what's at stake for economy</a></h4>
+                    <p class="summary">The Supreme Court decision on Trump's tariffs could have far-reaching impacts on trade policy and the U.S. fiscal situation.</p>
+                    <div class="source">CNBC Economy</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag trade">Trade</span>
+                    <h4><a href="https://www.cnbc.com/2026/01/08/trade-deficit-in-october-hits-smallest-since-2009-after-trumps-tariff-moves.html" target="_blank">Trade deficit in October hits smallest since 2009 after Trump's tariff moves</a></h4>
+                    <p class="summary">The U.S. trade deficit narrowed in October, down 39% from the prior month, following Trump's tariff actions.</p>
+                    <div class="source">CNBC Economy</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag economy">Economy</span>
+                    <h4><a href="https://www.cnbc.com/2026/01/08/treasury-secretary-bessent-says-more-fed-rate-cuts-are-only-ingredient-missing-for-stronger-economy.html" target="_blank">Treasury Secretary Bessent says more Fed rate cuts are 'only ingredient missing' for stronger economy</a></h4>
+                    <p class="summary">The Treasury Secretary called for more Fed rate cuts to spur economic growth.</p>
+                    <div class="source">CNBC Economy</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag economy">Economy</span>
+                    <h4><a href="https://www.cnbc.com/2026/01/08/layoff-pace-in-december-hit-lowest-level-since-mid-2024-challenger-says.html" target="_blank">Layoff pace in December hit lowest level since mid-2024, Challenger says</a></h4>
+                    <p class="summary">Planned job cuts in December fell 50% from November, hitting the lowest level since mid-2024.</p>
+                    <div class="source">CNBC Economy</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag economy">Economy</span>
+                    <h4><a href="https://www.cnbc.com/2026/01/07/adp-jobs-report-december-2025.html" target="_blank">Private payrolls rose 41,000 in December, slightly below expectations, ADP says</a></h4>
+                    <p class="summary">Private sector job creation turned positive in December, though at a softer pace than expected.</p>
+                    <div class="source">CNBC Economy</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag finance">Finance</span>
+                    <h4><a href="https://www.cnbc.com/2026/01/07/euro-zone-inflation-hits-2percent-in-december-in-line-with-forecasts.html" target="_blank">Euro zone inflation hits 2% in December, in line with forecasts</a></h4>
+                    <p class="summary">Eurozone inflation stood at 2% in December, in line with forecasts.</p>
+                    <div class="source">CNBC Economy</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag finance">Finance</span>
+                    <h4><a href="https://www.cnbc.com/2025/12/31/economist-mark-zandi-sees-the-fed-surprising-with-three-rate-cuts-in-first-half-of-2026-.html" target="_blank">Economist Mark Zandi sees the Fed surprising with three rate cuts in first half of 2026</a></h4>
+                    <p class="summary">An economist expects the Fed to cut rates three times in the first half of 2026.</p>
+                    <div class="source">CNBC Economy</div>
+                </div>
+                
+                <div class="news-item">
+                    <span class="topic-tag energy">Energy</span>
+                    <h4><a href="https://www.cnbc.com/2025/12/23/oil-prices-holiday-road-trip-december-aaa.html" target="_blank">Gas prices fall to four-year lows as millions embark on holiday road trips</a></h4>
+                    <p class="summary">U.S. gas prices hit four-year lows as millions traveled for the holidays.</p>
+                    <div class="source">CNBC Economy</div>
+                </div>
+                
+            </div>
+        </div>
+
+        <footer>Your personalized morning briefing</footer>
+    </div>
+</body>
+</html>
