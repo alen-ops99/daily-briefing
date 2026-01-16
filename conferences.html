@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Conference Guide - Alen Juginovic, M.D.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090b;
+            --bg-card: #18181b;
+            --bg-elevated: #27272a;
+            --text: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #a78bfa;
+            --border: #27272a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .header {
+            padding: 80px 24px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.03em;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 48px 24px; }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-bottom: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat { text-align: center; }
+        .stat-number { font-size: 2rem; font-weight: 600; color: var(--text); }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+        .deadlines {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 48px;
+        }
+
+        .deadlines h3 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .deadlines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 8px;
+        }
+
+        .deadline-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 12px;
+            background: var(--bg-elevated);
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+
+        .deadline-date { color: var(--accent); }
+
+        .section { margin-bottom: 64px; }
+
+        .section-header {
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section h2 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .section h2 span {
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-left: 12px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .card:hover { border-color: #3f3f46; }
+        .card.priority-high-selected { border-color: var(--accent); }
+        .card.priority-medium-selected { border-color: #71717a; }
+        .card.priority-low-selected { border-color: #3f3f46; }
+
+        .card-image {
+            height: 140px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, var(--bg-card));
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 8px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            z-index: 1;
+        }
+
+        .card-content { padding: 20px; }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .card-oneliner {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 0.8rem;
+        }
+
+        .card-details {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card-details-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 0.8rem;
+        }
+
+        .card-details-row + .card-details-row { border-top: 1px solid var(--border); }
+        .card-details-label { color: var(--text-muted); }
+
+        .speakers-box {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .speakers-box h4 {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .speakers-box p { font-size: 0.8rem; }
+
+        .card-why {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card-why h4 {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .card-why p { font-size: 0.8rem; }
+
+        .card-actions { display: flex; gap: 8px; margin-bottom: 16px; }
+
+        .btn {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-decoration: none;
+            text-align: center;
+            transition: opacity 0.15s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover { opacity: 0.9; }
+
+        .btn-secondary {
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+        }
+
+        .btn-secondary:hover { background: #3f3f46; }
+
+        .priority-selector {
+            display: flex;
+            gap: 6px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .priority-btn {
+            flex: 1;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .priority-btn:hover { border-color: #3f3f46; color: var(--text-secondary); }
+        .priority-btn.high.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+        .priority-btn.medium.active { background: var(--bg-elevated); color: var(--text); border-color: #52525b; }
+        .priority-btn.low.active { background: var(--bg-elevated); color: var(--text-muted); border-color: #3f3f46; }
+
+        .panel-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-toggle:hover { opacity: 0.9; }
+        .panel-toggle .count { background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; }
+
+        .priority-panel {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            width: 320px;
+            max-height: 60vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .priority-panel.hidden { display: none; }
+
+        .priority-panel h3 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .priority-group { margin-bottom: 16px; }
+
+        .priority-group h4 {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            padding: 6px 8px;
+            background: var(--bg-elevated);
+            border-radius: 4px;
+        }
+
+        .priority-group.high h4 { color: var(--accent); }
+
+        .priority-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            background: var(--bg-elevated);
+            border-radius: 6px;
+            margin-bottom: 4px;
+            font-size: 0.8rem;
+        }
+
+        .priority-item .date { color: var(--text-muted); font-size: 0.75rem; }
+        .priority-item .remove { background: none; border: none; color: var(--text-muted); cursor: pointer; opacity: 0.6; }
+        .priority-item .remove:hover { opacity: 1; }
+
+        .clear-all-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .clear-all-btn:hover { border-color: #3f3f46; }
+        .empty-state { color: var(--text-muted); font-size: 0.8rem; text-align: center; padding: 16px; }
+
+        .timeline {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 48px;
+        }
+
+        .timeline h2 {
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 6px;
+        }
+
+        .month {
+            text-align: center;
+            padding: 10px 4px;
+            background: var(--bg-elevated);
+            border-radius: 6px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .month.has-event { color: var(--accent); }
+        .month-events { font-size: 0.55rem; margin-top: 4px; line-height: 1.3; }
+
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .cards { grid-template-columns: 1fr; }
+            .stats { flex-wrap: wrap; gap: 24px; }
+            .timeline-grid { grid-template-columns: repeat(4, 1fr); }
+            .priority-panel { left: 24px; right: 24px; width: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>2026 Conference Guide</h1>
+        <p>Sleep medicine, speaking opportunities & elite networking</p>
+    </div>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat"><div class="stat-number">24</div><div class="stat-label">Events</div></div>
+            <div class="stat"><div class="stat-number">6</div><div class="stat-label">Speaking</div></div>
+            <div class="stat"><div class="stat-number">9</div><div class="stat-label">VIP</div></div>
+            <div class="stat"><div class="stat-number">11</div><div class="stat-label">Countries</div></div>
+        </div>
+
+        <div class="deadlines">
+            <h3>Upcoming Deadlines</h3>
+            <div class="deadlines-grid">
+                <div class="deadline-item"><span>SfN Abstract</span><span class="deadline-date">Jan 21</span></div>
+                <div class="deadline-item"><span>AAN Early Reg</span><span class="deadline-date">Jan 22</span></div>
+                <div class="deadline-item"><span>Spa Awards Entry</span><span class="deadline-date">Jan 23</span></div>
+                <div class="deadline-item"><span>Skift Early Bird</span><span class="deadline-date">Jan 30</span></div>
+                <div class="deadline-item"><span>AOSSM Opens</span><span class="deadline-date">Feb 3</span></div>
+                <div class="deadline-item"><span>Aspen Early Bird</span><span class="deadline-date">Mar 1</span></div>
+                <div class="deadline-item"><span>AAN Advance</span><span class="deadline-date">Mar 19</span></div>
+                <div class="deadline-item"><span>GWS Early Bird</span><span class="deadline-date">Apr 30</span></div>
+            </div>
+        </div>
+
+        <!-- VIP EVENTS -->
+        <div class="section">
+            <div class="section-header">
+                <h2>VIP Events<span>Luxury hotels, athletes & high-net-worth individuals</span></h2>
+            </div>
+            <div class="cards">
+                <div class="card" data-event="Monaco Grand Prix" data-date="Jun 4-7">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1504707748692-419802cf939d?w=800&q=80');">
+                        <span class="card-badge">VIP Access</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Monaco Grand Prix 2026</h3>
+                        <p class="card-oneliner">The world's most prestigious F1 race through Monte Carlo, attracting royalty, celebrities, and the global elite.</p>
+                        <div class="card-meta">
+                            <span>Jun 4-7, 2026</span>
+                            <span>Monte Carlo, Monaco</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Venue</span><span>Circuit de Monaco</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Price</span><span>From EUR 3,550</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Meet F1 team doctors & performance staff. Network with Hotel de Paris, Fairmont wellness directors.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://f1experiences.com/2026-monaco-grand-prix" class="btn btn-primary" target="_blank">Book</a>
+                            <a href="https://www.formula1.com/en/racing/2026/Monaco" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Abu Dhabi Grand Prix" data-date="Dec 3-6">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=800&q=80');">
+                        <span class="card-badge">Season Finale</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Abu Dhabi Grand Prix 2026</h3>
+                        <p class="card-oneliner">The spectacular F1 season finale at Yas Marina with world-class after-race concerts.</p>
+                        <div class="card-meta">
+                            <span>Dec 3-6, 2026</span>
+                            <span>Yas Island, UAE</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Venue</span><span>Yas Marina Circuit</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Concerts</span><span>From AED 995</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>UAE luxury hotel GMs. Connect with Jumeirah, Emirates Palace wellness teams.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.yasmarinacircuit.com/en/f1" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://f1experiences.com/2026-abu-dhabi-grand-prix" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Wimbledon Championships" data-date="Jun 29 - Jul 12">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=800&q=80');">
+                        <span class="card-badge">90% Sold</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Wimbledon Championships 2026</h3>
+                        <p class="card-oneliner">The oldest and most prestigious tennis tournament, synonymous with British tradition and elite corporate hospitality.</p>
+                        <div class="card-meta">
+                            <span>Jun 29 - Jul 12</span>
+                            <span>London, UK</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Venue</span><span>All England Lawn Tennis Club</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Price</span><span>From GBP 1,205</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>UK luxury hotel execs, ATP/WTA medical staff. Pitch jet lag solutions to tennis players.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.wimbledon.com/en_GB/tickets/index.html" class="btn btn-primary" target="_blank">Tickets</a>
+                            <a href="https://www.wimbledon.com/en_GB/about_wimbledon/index.html" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="ILTM Cannes" data-date="Nov 30 - Dec 3">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80');">
+                        <span class="card-badge">Must Attend</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">ILTM Cannes 2026</h3>
+                        <p class="card-oneliner">The world's premier luxury travel trade show where Four Seasons, Aman, and top wellness resorts meet partners.</p>
+                        <div class="card-meta">
+                            <span>Nov 30 - Dec 3</span>
+                            <span>Cannes, France</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Venue</span><span>Palais des Festivals</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Meetings</span><span>85,000+ pre-scheduled</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Pitch sleep programs to luxury hotels. Every major brand's wellness director attends.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.iltm.com/cannes/en-gb/register.html" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://www.iltm.com/cannes/en-gb.html" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Global Wellness Summit" data-date="Nov 10-13">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbec77?w=800&q=80');">
+                        <span class="card-badge">20th Year</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Global Wellness Summit 2026</h3>
+                        <p class="card-oneliner">The annual gathering of wellness industry leaders shaping the $5.6 trillion global wellness economy.</p>
+                        <div class="card-meta">
+                            <span>Nov 10-13, 2026</span>
+                            <span>Phuket, Thailand</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Early Bird</span><span>$5,050 (until Apr 30)</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Standard</span><span>$6,000</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Apply to speak on sleep wellness. Network with spa directors from around the world.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.globalwellnesssummit.com/2026-global-wellness-summit/" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://www.globalwellnesssummit.com/about/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="World Spa Awards" data-date="Oct 4">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80');">
+                        <span class="card-badge">Oscars of Spa</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">World Spa & Wellness Awards</h3>
+                        <p class="card-oneliner">The "Oscars" of the spa industry - an exclusive gala where every major spa decision-maker gathers.</p>
+                        <div class="card-meta">
+                            <span>Oct 4, 2026</span>
+                            <span>London, UK</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Entry Deadline</span><span>Jan 23, 2026</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Entry Fee</span><span>FREE</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Concentrated access to spa directors worldwide. Perfect time to pitch partnerships.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://wswawards.com/enter/" class="btn btn-primary" target="_blank">Enter</a>
+                            <a href="https://wswawards.com/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Forbes Under 30 Summit" data-date="Apr 19-22">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80');">
+                        <span class="card-badge">Your Network</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Forbes Under 30 Summit 2026</h3>
+                        <p class="card-oneliner">The ultimate gathering of young entrepreneurs, investors, and changemakers from the Forbes 30 Under 30 community.</p>
+                        <div class="card-meta">
+                            <span>Apr 19-22, 2026</span>
+                            <span>Phoenix, AZ</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Attendance</span><span>5,000-10,000 expected</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Health-conscious founders obsess over optimization. Pitch "sleep for peak performance."</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.forbes.com/forbes-live/events/under-30-summit/" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://www.forbes.com/forbes-live/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Skift Global Forum" data-date="Sep 22-24">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80');">
+                        <span class="card-badge">Travel CEOs</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Skift Global Forum 2026</h3>
+                        <p class="card-oneliner">The premier conference for travel industry executives featuring CEOs of Airbnb, Booking, Expedia, and major hotel chains.</p>
+                        <div class="card-meta">
+                            <span>Sep 22-24, 2026</span>
+                            <span>New York, NY</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Early Bird</span><span>$2,495 (by Jan 30)</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Attendees</span><span>1,200+ (76% Director+)</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Hotel CEOs discussing guest experience. Position sleep wellness as competitive differentiator.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://live.skift.com/skift-global-forum/" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://skift.com/skift-global-forum/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Leaders Meet Innovation" data-date="Mar 11-12">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=80');">
+                        <span class="card-badge">Invite Only</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Leaders Meet: Innovation 2026</h3>
+                        <p class="card-oneliner">An exclusive, invite-only gathering of 350 C-suite sports executives under Chatham House Rules.</p>
+                        <div class="card-meta">
+                            <span>Mar 11-12, 2026</span>
+                            <span>London, UK</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Rights Holders</span><span>GBP 695 + VAT</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Service Providers</span><span>GBP 1,395 + VAT</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Elite athlete sleep consulting connections. Team owners, league officials, performance directors.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://leadersinsport.com/sport-business/leaders-events/leaders-meet-innovation/" class="btn btn-primary" target="_blank">Request</a>
+                            <a href="https://leadersinsport.com/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLEEP MEDICINE -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Sleep Medicine<span>Research presentation and editorial relationships</span></h2>
+            </div>
+            <div class="cards">
+                <div class="card" data-event="SLEEP 2026" data-date="Jun 14-17">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80');">
+                        <span class="card-badge">Must Attend</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">SLEEP 2026 (AASM/SRS)</h3>
+                        <p class="card-oneliner">The premier annual meeting for sleep medicine professionals, jointly hosted by AASM and Sleep Research Society.</p>
+                        <div class="card-meta">
+                            <span>Jun 14-17, 2026</span>
+                            <span>Baltimore, MD</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Attendees</span><span>5,000+</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Milestone</span><span>40th Annual Meeting</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>You're on JCSM Editorial Board - mandatory. Present sleep spindle/cardiovascular research.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.sleepmeeting.org/" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://aasm.org/clinical-resources/practice-standards/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Sleep Europe 2026" data-date="Oct 20-23">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80');">
+                        <span class="card-badge">Must Attend</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sleep Europe 2026 (ESRS)</h3>
+                        <p class="card-oneliner">Europe's leading sleep medicine congress organized by the European Sleep Research Society - 28th edition.</p>
+                        <div class="card-meta">
+                            <span>Oct 20-23, 2026</span>
+                            <span>Maastricht, Netherlands</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Venue</span><span>MECC Maastricht</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Attendees</span><span>1,500+</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Present Cell 2023 gut-peptide findings. Easy travel to Zagreb clinic. Build European referral network.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://esrs.eu/event/sleep-europe-2026/" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://esrs.eu/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="ISDA Congress" data-date="Mar 22-25">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80');">
+                        <span class="card-badge">Latin America</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">ISDA Congress 2026</h3>
+                        <p class="card-oneliner">Joint congress of the International Sleep Disorder Academy and Ibero-American Sleep Surgery Society.</p>
+                        <div class="card-meta">
+                            <span>Mar 22-25, 2026</span>
+                            <span>Mexico City</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Organizers</span><span>ISDA + SIBCS</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Expand Latin American market. Practice Spanish. Potential Med&X LATAM expansion.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://isda-congress.com/registration-copy/" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://isda-congress.com/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPEAKING -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Speaking Opportunities<span>High-profile stages for sleep & gut-brain research</span></h2>
+            </div>
+            <div class="cards">
+                <div class="card" data-event="TED2026" data-date="Apr 13-17">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80');">
+                        <span class="card-badge">Apply Now</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">TED2026 - "All of Us"</h3>
+                        <p class="card-oneliner">The world's most influential ideas conference - the ultimate platform for sharing research with millions.</p>
+                        <div class="card-meta">
+                            <span>Apr 13-17, 2026</span>
+                            <span>Vancouver, Canada</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Speakers</span><span>80+ talks & performances</span></div>
+                        </div>
+                        <div class="speakers-box">
+                            <h4>Confirmed Speakers</h4>
+                            <p>Jonathan Haidt, Van Jones, Mark Rober, Amy Cuddy, Bill McKibben</p>
+                        </div>
+                        <div class="card-why">
+                            <h4>Your Pitch</h4>
+                            <p>"Why sleep deprivation doesn't kill you - the surprising protector in your gut." Cell 2023 is perfect TED material.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://ted.com/about/conferences/apply-to-speak" class="btn btn-primary" target="_blank">Apply</a>
+                            <a href="https://ted.com/about/conferences" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Aspen Ideas Health" data-date="Jun 22-25">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80');">
+                        <span class="card-badge">Book Talk</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Aspen Ideas: Health 2026</h3>
+                        <p class="card-oneliner">An invitation-only health festival in Colorado where thought leaders shape the future of healthcare.</p>
+                        <div class="card-meta">
+                            <span>Jun 22-25, 2026</span>
+                            <span>Aspen, CO</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Early Bird</span><span>Save $200 (by Mar 1)</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Your Pitch</h4>
+                            <p>Perfect for Springer book "Sleep Science Made Simple." Pitch: "Sleep as the missing pillar of longevity."</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.aspenideas.org/pages/recommend-a-speaker-for-aspen-ideas-health" class="btn btn-primary" target="_blank">Nominate</a>
+                            <a href="https://www.aspenideas.org/health" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="SXSW Health" data-date="Mar 16-18">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800&q=80');">
+                        <span class="card-badge">40th Year</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">SXSW 2026 - Health Track</h3>
+                        <p class="card-oneliner">The legendary Austin festival's health track exploring longevity, mental health, and personalized medicine.</p>
+                        <div class="card-meta">
+                            <span>Mar 16-18, 2026</span>
+                            <span>Austin, TX</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Badge</span><span>Platinum or Innovation</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Attendance</span><span>70,000+</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Your Pitch</h4>
+                            <p>"Sleep: The ultimate performance enhancer Silicon Valley forgot."</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://panelpicker.sxsw.com/" class="btn btn-primary" target="_blank">Submit</a>
+                            <a href="https://www.sxsw.com/conference/health/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Longevity Med Summit" data-date="May 9-10">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80');">
+                        <span class="card-badge">Longevity</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Longevity Med Summit 2026</h3>
+                        <p class="card-oneliner">Europe's leading longevity medicine conference connecting clinicians, researchers, and biotech innovators.</p>
+                        <div class="card-meta">
+                            <span>May 9-10, 2026</span>
+                            <span>London, UK</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Venue</span><span>Business Design Centre</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Your Pitch</h4>
+                            <p>"Sleep deprivation accelerates aging through gut oxidation - and how to stop it."</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://longevitymedsummit.com/submit-abstract/" class="btn btn-primary" target="_blank">Submit</a>
+                            <a href="https://longevitymedsummit.com/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="AOSSM Annual Meeting" data-date="Jul 8-11">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1461896836934-59a10b8d2000?w=800&q=80');">
+                        <span class="card-badge">Sports Elite</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">AOSSM Annual Meeting 2026</h3>
+                        <p class="card-oneliner">The premier gathering of sports medicine physicians who treat professional and elite athletes.</p>
+                        <div class="card-meta">
+                            <span>Jul 8-11, 2026</span>
+                            <span>Seattle, WA</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Registration</span><span>Opens Feb 3</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Your Pitch</h4>
+                            <p>"Sleep optimization protocols for elite athlete recovery."</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.sportsmed.org/education-careers/meetings/annual-meeting" class="btn btn-primary" target="_blank">Submit</a>
+                            <a href="https://www.sportsmed.org/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NETWORKING -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Networking<span>Healthcare leaders, investors & innovators</span></h2>
+            </div>
+            <div class="cards">
+                <div class="card" data-event="Davos WEF" data-date="Jan 19-23">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1464699908537-0954e50791ee?w=800&q=80');">
+                        <span class="card-badge">World Leaders</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">World Economic Forum - Davos</h3>
+                        <p class="card-oneliner">The annual meeting of 3,000 global leaders including heads of state, CEOs, and thought leaders.</p>
+                        <div class="card-meta">
+                            <span>Jan 19-23, 2026</span>
+                            <span>Davos, Switzerland</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Attendees</span><span>3,000 from 130 countries</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Heads of State</span><span>~60 expected</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>EU Parliament award + Harvard credentials open doors. Forbes 30U30 leads to Young Global Leaders.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.weforum.org/meetings/world-economic-forum-annual-meeting-2026/" class="btn btn-primary" target="_blank">Official</a>
+                            <a href="https://www.weforum.org/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Milken Global" data-date="May 3-6">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80');">
+                        <span class="card-badge">Capital</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Milken Global Conference 2026</h3>
+                        <p class="card-oneliner">A premier gathering connecting capital with transformative ideas, featuring philanthropists and healthcare innovators.</p>
+                        <div class="card-meta">
+                            <span>May 3-6, 2026</span>
+                            <span>Los Angeles, CA</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Venues</span><span>Beverly Hilton & Waldorf Astoria</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Attendees</span><span>4,000+</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Perfect for Med&X mission. Connect with philanthropists who fund global health.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://milkeninstitute.org/events/global-conference-2026" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://milkeninstitute.org/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="HLTH USA" data-date="Nov 15-18">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=800&q=80');">
+                        <span class="card-badge">#1 Innovation</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">HLTH USA 2026</h3>
+                        <p class="card-oneliner">The largest healthcare innovation conference, bringing together 12,000+ leaders reshaping healthcare through technology.</p>
+                        <div class="card-meta">
+                            <span>Nov 15-18, 2026</span>
+                            <span>Las Vegas, NV</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Attendees</span><span>12,250+ (4,300 C-Suite)</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Speakers</span><span>500+</span></div>
+                        </div>
+                        <div class="speakers-box">
+                            <h4>Featured Speakers</h4>
+                            <p>Mark Cuban, Sarah London (Centene CEO), Greg Adams (Kaiser CEO)</p>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Sleep tech startups, wearables, AI diagnostics. Meet digital health investors.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.hlth.com/2026event" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://www.hlth.com/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="JP Morgan Healthcare" data-date="Jan 10-17">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&q=80');">
+                        <span class="card-badge">Side Events</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">JP Morgan Healthcare Week</h3>
+                        <p class="card-oneliner">The "Super Bowl" of healthcare investing where billions in deals are made, with dozens of satellite events.</p>
+                        <div class="card-meta">
+                            <span>Jan 10-17, 2026</span>
+                            <span>San Francisco, CA</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Main JPM</span><span>Invite-only (Jan 12-15)</span></div>
+                            <div class="card-details-row"><span class="card-details-label">HealthTech Summit</span><span>Jan 14-16 (open)</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>HealthTech Summit has sleep tech track. Pitch competitions and investor meetings.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://healthtechweek.org/" class="btn btn-primary" target="_blank">HealthTech</a>
+                            <a href="https://www.jpmorgan.com/about-us/events-conferences/health-care-conference" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEUROSCIENCE -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Neuroscience<span>Academic conferences for research</span></h2>
+            </div>
+            <div class="cards">
+                <div class="card" data-event="SfN Neuroscience" data-date="Nov 14-18">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800&q=80');">
+                        <span class="card-badge">30,000+</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Neuroscience 2026 (SfN)</h3>
+                        <p class="card-oneliner">The world's largest neuroscience conference with 30,000+ attendees - the definitive platform for brain research.</p>
+                        <div class="card-meta">
+                            <span>Nov 14-18, 2026</span>
+                            <span>Washington, D.C.</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Abstract Deadline</span><span>Jan 21, 2026 (5pm EST)</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Present gut-brain-sleep research. 2025 Harvard Brain Initiative Postdoc Pioneer - leverage that recognition.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.sfn.org/meetings/neuroscience-2026/abstracts" class="btn btn-primary" target="_blank">Submit</a>
+                            <a href="https://www.sfn.org/meetings/neuroscience-2026" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="AAN Annual Meeting" data-date="Apr 18-22">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80');">
+                        <span class="card-badge">Clinical</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">AAN Annual Meeting 2026</h3>
+                        <p class="card-oneliner">The largest gathering of neurologists worldwide, hosted by the American Academy of Neurology.</p>
+                        <div class="card-meta">
+                            <span>Apr 18-22, 2026</span>
+                            <span>Chicago, IL</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Early Registration</span><span>By Jan 22</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Advance</span><span>By Mar 19</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Present sleep spindle cardiovascular outcomes. Bridge MGH clinical training with research.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.aan.com/events/annual-meeting" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://www.aan.com/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <h2>2026 Calendar</h2>
+            <div class="timeline-grid">
+                <div class="month has-event"><strong>JAN</strong><div class="month-events">JPM, Davos</div></div>
+                <div class="month"><strong>FEB</strong></div>
+                <div class="month has-event"><strong>MAR</strong><div class="month-events">SXSW, ISDA</div></div>
+                <div class="month has-event"><strong>APR</strong><div class="month-events">TED, AAN, Forbes</div></div>
+                <div class="month has-event"><strong>MAY</strong><div class="month-events">Milken, Longevity</div></div>
+                <div class="month has-event"><strong>JUN</strong><div class="month-events">Monaco, SLEEP</div></div>
+                <div class="month has-event"><strong>JUL</strong><div class="month-events">AOSSM, Wimbledon</div></div>
+                <div class="month"><strong>AUG</strong></div>
+                <div class="month has-event"><strong>SEP</strong><div class="month-events">Skift</div></div>
+                <div class="month has-event"><strong>OCT</strong><div class="month-events">Sleep Europe</div></div>
+                <div class="month has-event"><strong>NOV</strong><div class="month-events">SfN, HLTH, GWS</div></div>
+                <div class="month has-event"><strong>DEC</strong><div class="month-events">Abu Dhabi, ILTM</div></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Alen Juginovic, M.D. | Harvard Medical School | January 2026</p>
+        </div>
+    </div>
+
+    <button class="panel-toggle" onclick="togglePanel()">
+        Priorities <span class="count" id="totalCount">0</span>
+    </button>
+
+    <div class="priority-panel hidden" id="priorityPanel">
+        <h3>My Priorities</h3>
+        <div class="priority-group high"><h4>High</h4><div id="highList"></div></div>
+        <div class="priority-group medium"><h4>Medium</h4><div id="mediumList"></div></div>
+        <div class="priority-group low"><h4>Low</h4><div id="lowList"></div></div>
+        <div id="emptyState" class="empty-state">Click priority buttons to organize</div>
+        <button class="clear-all-btn" onclick="clearAll()">Clear All</button>
+    </div>
+
+    <script>
+        let priorities = { high: [], medium: [], low: [] };
+        if (localStorage.getItem('eventPriorities')) {
+            priorities = JSON.parse(localStorage.getItem('eventPriorities'));
+            renderPriorities();
+            restoreButtonStates();
+        }
+
+        function setPriority(button, level) {
+            const card = button.closest('.card');
+            const eventName = card.dataset.event;
+            const eventDate = card.dataset.date;
+            ['high', 'medium', 'low'].forEach(l => { priorities[l] = priorities[l].filter(e => e.name !== eventName); });
+            card.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('active'));
+            card.classList.remove('priority-high-selected', 'priority-medium-selected', 'priority-low-selected');
+            const wasActive = button.classList.contains('active');
+            if (!wasActive) {
+                priorities[level].push({ name: eventName, date: eventDate });
+                button.classList.add('active');
+                card.classList.add(`priority-${level}-selected`);
+            }
+            localStorage.setItem('eventPriorities', JSON.stringify(priorities));
+            renderPriorities();
+        }
+
+        function renderPriorities() {
+            const total = priorities.high.length + priorities.medium.length + priorities.low.length;
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('emptyState').style.display = total === 0 ? 'block' : 'none';
+            ['high', 'medium', 'low'].forEach(level => {
+                const list = document.getElementById(`${level}List`);
+                list.innerHTML = priorities[level].length === 0
+                    ? '<div style="color:var(--text-muted);font-size:0.75rem;padding:6px;">None</div>'
+                    : priorities[level].map(e => `<div class="priority-item"><span>${e.name}</span><span class="date">${e.date}</span><button class="remove" onclick="removeEvent('${level}','${e.name}')">&times;</button></div>`).join('');
+            });
+        }
+
+        function removeEvent(level, eventName) {
+            priorities[level] = priorities[level].filter(e => e.name !== eventName);
+            localStorage.setItem('eventPriorities', JSON.stringify(priorities));
+            renderPriorities();
+            const card = document.querySelector(`[data-event="${eventName}"]`);
+            if (card) {
+                card.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('active'));
+                card.classList.remove('priority-high-selected', 'priority-medium-selected', 'priority-low-selected');
+            }
+        }
+
+        function restoreButtonStates() {
+            ['high', 'medium', 'low'].forEach(level => {
+                priorities[level].forEach(event => {
+                    const card = document.querySelector(`[data-event="${event.name}"]`);
+                    if (card) {
+                        card.querySelector(`.priority-btn.${level}`).classList.add('active');
+                        card.classList.add(`priority-${level}-selected`);
+                    }
+                });
+            });
+        }
+
+        function togglePanel() { document.getElementById('priorityPanel').classList.toggle('hidden'); }
+
+        function clearAll() {
+            priorities = { high: [], medium: [], low: [] };
+            localStorage.setItem('eventPriorities', JSON.stringify(priorities));
+            renderPriorities();
+            document.querySelectorAll('.card').forEach(card => {
+                card.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('active'));
+                card.classList.remove('priority-high-selected', 'priority-medium-selected', 'priority-low-selected');
+            });
+        }
+
+        renderPriorities();
+    </script>
+</body>
+</html>
