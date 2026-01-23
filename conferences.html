@@ -126,9 +126,24 @@
         }
 
         .card:hover { border-color: #3f3f46; }
-        .card.priority-high-selected { border-color: var(--accent); }
-        .card.priority-medium-selected { border-color: #71717a; }
-        .card.priority-low-selected { border-color: #3f3f46; }
+        .card.priority-high-selected {
+            border-color: var(--accent);
+            border-width: 2px;
+            box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.08) 0%, var(--bg-card) 100%);
+        }
+        .card.priority-medium-selected {
+            border-color: #f59e0b;
+            border-width: 2px;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, var(--bg-card) 100%);
+        }
+        .card.priority-low-selected {
+            border-color: #22c55e;
+            border-width: 2px;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.06) 0%, var(--bg-card) 100%);
+        }
 
         .card-image {
             height: 140px;
@@ -288,8 +303,8 @@
 
         .priority-btn:hover { border-color: #3f3f46; color: var(--text-secondary); }
         .priority-btn.high.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-        .priority-btn.medium.active { background: var(--bg-elevated); color: var(--text); border-color: #52525b; }
-        .priority-btn.low.active { background: var(--bg-elevated); color: var(--text-muted); border-color: #3f3f46; }
+        .priority-btn.medium.active { background: #f59e0b; color: var(--bg); border-color: #f59e0b; }
+        .priority-btn.low.active { background: #22c55e; color: var(--bg); border-color: #22c55e; }
 
         .panel-toggle {
             position: fixed;
@@ -351,6 +366,8 @@
         }
 
         .priority-group.high h4 { color: var(--accent); }
+        .priority-group.medium h4 { color: #f59e0b; }
+        .priority-group.low h4 { color: #22c55e; }
 
         .priority-item {
             display: flex;
