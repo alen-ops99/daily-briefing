@@ -306,6 +306,55 @@
         .priority-btn.medium.active { background: #f59e0b; color: var(--bg); border-color: #f59e0b; }
         .priority-btn.low.active { background: #22c55e; color: var(--bg); border-color: #22c55e; }
 
+        .attendance-selector {
+            display: flex;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .attendance-btn {
+            flex: 1;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .attendance-btn:hover { border-color: #3f3f46; color: var(--text-secondary); }
+        .attendance-btn.speak.active { background: #3b82f6; color: white; border-color: #3b82f6; }
+        .attendance-btn.guest.active { background: #8b5cf6; color: white; border-color: #8b5cf6; }
+
+        .notes-section {
+            margin-top: 12px;
+        }
+
+        .notes-section textarea {
+            width: 100%;
+            min-height: 60px;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.8rem;
+            resize: vertical;
+        }
+
+        .notes-section textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .notes-section textarea::placeholder {
+            color: var(--text-muted);
+        }
+
         .panel-toggle {
             position: fixed;
             bottom: 24px;
@@ -511,6 +560,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -541,6 +597,13 @@
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -573,6 +636,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -603,6 +673,13 @@
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -635,6 +712,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -666,6 +750,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -695,6 +786,13 @@
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -727,6 +825,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -757,6 +862,13 @@
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -797,6 +909,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -828,6 +947,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -857,6 +983,13 @@
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -900,6 +1033,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -929,6 +1069,13 @@
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -961,6 +1108,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -991,6 +1145,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -1020,6 +1181,13 @@
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -1060,6 +1228,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -1090,6 +1265,13 @@
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -1126,6 +1308,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -1156,6 +1345,13 @@
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -1195,6 +1391,13 @@
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
                         </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -1225,6 +1428,13 @@
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
                             <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
                             <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -1269,11 +1479,25 @@
 
     <script>
         let priorities = { high: [], medium: [], low: [] };
+        let attendance = {};
+        let notes = {};
+
+        // Load saved data
         if (localStorage.getItem('eventPriorities')) {
             priorities = JSON.parse(localStorage.getItem('eventPriorities'));
-            renderPriorities();
-            restoreButtonStates();
         }
+        if (localStorage.getItem('eventAttendance')) {
+            attendance = JSON.parse(localStorage.getItem('eventAttendance'));
+        }
+        if (localStorage.getItem('eventNotes')) {
+            notes = JSON.parse(localStorage.getItem('eventNotes'));
+        }
+
+        // Initialize on page load
+        renderPriorities();
+        restoreButtonStates();
+        restoreAttendance();
+        restoreNotes();
 
         function setPriority(button, level) {
             const card = button.closest('.card');
@@ -1292,6 +1516,31 @@
             renderPriorities();
         }
 
+        function setAttendance(button, type) {
+            const card = button.closest('.card');
+            const eventName = card.dataset.event;
+            const wasActive = button.classList.contains('active');
+            card.querySelectorAll('.attendance-btn').forEach(btn => btn.classList.remove('active'));
+            if (!wasActive) {
+                attendance[eventName] = type;
+                button.classList.add('active');
+            } else {
+                delete attendance[eventName];
+            }
+            localStorage.setItem('eventAttendance', JSON.stringify(attendance));
+        }
+
+        function saveNote(textarea) {
+            const card = textarea.closest('.card');
+            const eventName = card.dataset.event;
+            if (textarea.value.trim()) {
+                notes[eventName] = textarea.value;
+            } else {
+                delete notes[eventName];
+            }
+            localStorage.setItem('eventNotes', JSON.stringify(notes));
+        }
+
         function renderPriorities() {
             const total = priorities.high.length + priorities.medium.length + priorities.low.length;
             document.getElementById('totalCount').textContent = total;
@@ -1300,7 +1549,10 @@
                 const list = document.getElementById(`${level}List`);
                 list.innerHTML = priorities[level].length === 0
                     ? '<div style="color:var(--text-muted);font-size:0.75rem;padding:6px;">None</div>'
-                    : priorities[level].map(e => `<div class="priority-item"><span>${e.name}</span><span class="date">${e.date}</span><button class="remove" onclick="removeEvent('${level}','${e.name}')">&times;</button></div>`).join('');
+                    : priorities[level].map(e => {
+                        const att = attendance[e.name] ? `<span style="color:${attendance[e.name]==='speak'?'#3b82f6':'#8b5cf6'};font-size:0.65rem;margin-left:4px;">${attendance[e.name].toUpperCase()}</span>` : '';
+                        return `<div class="priority-item"><span>${e.name}${att}</span><span class="date">${e.date}</span><button class="remove" onclick="removeEvent('${level}','${e.name}')">&times;</button></div>`;
+                    }).join('');
             });
         }
 
@@ -1327,19 +1579,41 @@
             });
         }
 
+        function restoreAttendance() {
+            Object.entries(attendance).forEach(([eventName, type]) => {
+                const card = document.querySelector(`[data-event="${eventName}"]`);
+                if (card) {
+                    card.querySelector(`.attendance-btn.${type}`).classList.add('active');
+                }
+            });
+        }
+
+        function restoreNotes() {
+            Object.entries(notes).forEach(([eventName, note]) => {
+                const card = document.querySelector(`[data-event="${eventName}"]`);
+                if (card) {
+                    card.querySelector('.notes-section textarea').value = note;
+                }
+            });
+        }
+
         function togglePanel() { document.getElementById('priorityPanel').classList.toggle('hidden'); }
 
         function clearAll() {
             priorities = { high: [], medium: [], low: [] };
+            attendance = {};
+            notes = {};
             localStorage.setItem('eventPriorities', JSON.stringify(priorities));
+            localStorage.setItem('eventAttendance', JSON.stringify(attendance));
+            localStorage.setItem('eventNotes', JSON.stringify(notes));
             renderPriorities();
             document.querySelectorAll('.card').forEach(card => {
                 card.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('active'));
+                card.querySelectorAll('.attendance-btn').forEach(btn => btn.classList.remove('active'));
                 card.classList.remove('priority-high-selected', 'priority-medium-selected', 'priority-low-selected');
+                card.querySelector('.notes-section textarea').value = '';
             });
         }
-
-        renderPriorities();
     </script>
 </body>
 </html>
