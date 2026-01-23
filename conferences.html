@@ -506,10 +506,10 @@
 
     <div class="container">
         <div class="stats">
-            <div class="stat"><div class="stat-number">24</div><div class="stat-label">Events</div></div>
-            <div class="stat"><div class="stat-number">6</div><div class="stat-label">Speaking</div></div>
-            <div class="stat"><div class="stat-number">9</div><div class="stat-label">VIP</div></div>
-            <div class="stat"><div class="stat-number">11</div><div class="stat-label">Countries</div></div>
+            <div class="stat"><div class="stat-number">30</div><div class="stat-label">Events</div></div>
+            <div class="stat"><div class="stat-number">7</div><div class="stat-label">Speaking</div></div>
+            <div class="stat"><div class="stat-number">11</div><div class="stat-label">VIP</div></div>
+            <div class="stat"><div class="stat-number">13</div><div class="stat-label">Countries</div></div>
         </div>
 
         <div class="deadlines">
@@ -872,6 +872,82 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="card" data-event="Arabian Travel Market" data-date="May 4-7">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80');">
+                        <span class="card-badge">Ultra Luxury</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Arabian Travel Market 2026</h3>
+                        <p class="card-oneliner">The Middle East's leading travel trade show featuring ultra-luxury hospitality brands and wellness destinations.</p>
+                        <div class="card-meta">
+                            <span>May 4-7, 2026</span>
+                            <span>Dubai, UAE</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Venue</span><span>Dubai World Trade Centre</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Feature</span><span>ATM Ultra Luxury Lounge</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>NEW Ultra Luxury Lounge connects with UHNW travel brands. Meet Jumeirah, Aman, Four Seasons Middle East wellness directors.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.wtm.com/atm/en-gb.html" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://www.wtm.com/atm/en-gb/whats-on.html" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Health Optimisation Summit" data-date="Sep 13-14">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80');">
+                        <span class="card-badge">Biohacking</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Health Optimisation Summit 2026</h3>
+                        <p class="card-oneliner">Europe's premier biohacking and wellness event - endorsed by Ben Greenfield as a "must-do on the face of the planet."</p>
+                        <div class="card-meta">
+                            <span>Sep 13-14, 2026</span>
+                            <span>London, UK</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Attendees</span><span>4,000+</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Focus</span><span>Biohacking & Longevity</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Sleep optimization is core to biohacking. Connect with wellness influencers and longevity-focused HNW individuals.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://healthoptimisationsummit.com/" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://healthoptimisationsummit.com/speakers/" class="btn btn-secondary" target="_blank">Speakers</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -978,6 +1054,82 @@
                         <div class="card-actions">
                             <a href="https://isda-congress.com/registration-copy/" class="btn btn-primary" target="_blank">Register</a>
                             <a href="https://isda-congress.com/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Mayo Clinic Sleep Update" data-date="Jul 29 - Aug 1">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80');">
+                        <span class="card-badge">CME</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Mayo Clinic Sleep Medicine Update</h3>
+                        <p class="card-oneliner">Comprehensive review of sleep disorders using case-based scenarios enriched with clinical experiences from Mayo experts.</p>
+                        <div class="card-meta">
+                            <span>Jul 29 - Aug 1, 2026</span>
+                            <span>Vancouver, BC</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Venue</span><span>JW Marriott Parq Vancouver</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Credits</span><span>CME Available</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>Top-tier CME for clinical training. Network with Mayo sleep physicians. Strengthen clinical credentials.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://ce.mayo.edu/internal-medicine/content/mayo-clinic-sleep-medicine-update-2026" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://ce.mayo.edu/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="World Sleep Congress" data-date="Jun 22-23">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80');">
+                        <span class="card-badge">Global</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">World Congress on Sleep Disorders</h3>
+                        <p class="card-oneliner">Global perspectives in sleep health and therapeutics - connecting researchers, clinicians, and industry leaders.</p>
+                        <div class="card-meta">
+                            <span>Jun 22-23, 2026</span>
+                            <span>Amsterdam, Netherlands</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Theme</span><span>Global Perspectives in Sleep Health</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Focus</span><span>Research & Clinical Practice</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Attend</h4>
+                            <p>European research connections. Close to ESRS congress timing for efficient travel planning.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://sleepdisorders.neurologyconference.com/" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://sleepdisorders.neurologyconference.com/scientific-program" class="btn btn-secondary" target="_blank">Program</a>
                         </div>
                         <div class="priority-selector">
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
@@ -1176,6 +1328,44 @@
                         <div class="card-actions">
                             <a href="https://www.sportsmed.org/education-careers/meetings/annual-meeting" class="btn btn-primary" target="_blank">Submit</a>
                             <a href="https://www.sportsmed.org/" class="btn btn-secondary" target="_blank">Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="BEYOND Conference" data-date="May 27-29">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&q=80');">
+                        <span class="card-badge">Dave Asprey</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">BEYOND Conference 2026</h3>
+                        <p class="card-oneliner">Dave Asprey's evolution of the Biohacking Conference - the ultimate gathering for human optimization and longevity.</p>
+                        <div class="card-meta">
+                            <span>May 27-29, 2026</span>
+                            <span>Austin, TX</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Venue</span><span>The Fairmont Austin</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Attendees</span><span>4,000+</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Your Pitch</h4>
+                            <p>"Sleep optimization: The biohack that makes all other biohacks work." Perfect audience for sleep science.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://beyondconference.com/" class="btn btn-primary" target="_blank">Register</a>
+                            <a href="https://beyondconference.com/speakers" class="btn btn-secondary" target="_blank">Speakers</a>
                         </div>
                         <div class="priority-selector">
                             <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
@@ -1446,14 +1636,14 @@
             <div class="timeline-grid">
                 <div class="month has-event"><strong>JAN</strong><div class="month-events">JPM, Davos</div></div>
                 <div class="month"><strong>FEB</strong></div>
-                <div class="month has-event"><strong>MAR</strong><div class="month-events">SXSW, ISDA</div></div>
+                <div class="month has-event"><strong>MAR</strong><div class="month-events">SXSW, ISDA, Leaders</div></div>
                 <div class="month has-event"><strong>APR</strong><div class="month-events">TED, AAN, Forbes</div></div>
-                <div class="month has-event"><strong>MAY</strong><div class="month-events">Milken, Longevity</div></div>
-                <div class="month has-event"><strong>JUN</strong><div class="month-events">Monaco, SLEEP</div></div>
-                <div class="month has-event"><strong>JUL</strong><div class="month-events">AOSSM, Wimbledon</div></div>
+                <div class="month has-event"><strong>MAY</strong><div class="month-events">ATM, Milken, BEYOND</div></div>
+                <div class="month has-event"><strong>JUN</strong><div class="month-events">Monaco, SLEEP, Amsterdam</div></div>
+                <div class="month has-event"><strong>JUL</strong><div class="month-events">AOSSM, Wimbledon, Mayo</div></div>
                 <div class="month"><strong>AUG</strong></div>
-                <div class="month has-event"><strong>SEP</strong><div class="month-events">Skift</div></div>
-                <div class="month has-event"><strong>OCT</strong><div class="month-events">Sleep Europe</div></div>
+                <div class="month has-event"><strong>SEP</strong><div class="month-events">Skift, Health Opt</div></div>
+                <div class="month has-event"><strong>OCT</strong><div class="month-events">Sleep Europe, Spa Awards</div></div>
                 <div class="month has-event"><strong>NOV</strong><div class="month-events">SfN, HLTH, GWS</div></div>
                 <div class="month has-event"><strong>DEC</strong><div class="month-events">Abu Dhabi, ILTM</div></div>
             </div>
