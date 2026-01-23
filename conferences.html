@@ -1279,10 +1279,10 @@
             const card = button.closest('.card');
             const eventName = card.dataset.event;
             const eventDate = card.dataset.date;
+            const wasActive = button.classList.contains('active');
             ['high', 'medium', 'low'].forEach(l => { priorities[l] = priorities[l].filter(e => e.name !== eventName); });
             card.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('active'));
             card.classList.remove('priority-high-selected', 'priority-medium-selected', 'priority-low-selected');
-            const wasActive = button.classList.contains('active');
             if (!wasActive) {
                 priorities[level].push({ name: eventName, date: eventDate });
                 button.classList.add('active');
