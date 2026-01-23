@@ -506,10 +506,10 @@
 
     <div class="container">
         <div class="stats">
-            <div class="stat"><div class="stat-number">30</div><div class="stat-label">Events</div></div>
+            <div class="stat"><div class="stat-number">36</div><div class="stat-label">Events</div></div>
             <div class="stat"><div class="stat-number">7</div><div class="stat-label">Speaking</div></div>
             <div class="stat"><div class="stat-number">11</div><div class="stat-label">VIP</div></div>
-            <div class="stat"><div class="stat-number">13</div><div class="stat-label">Countries</div></div>
+            <div class="stat"><div class="stat-number">15</div><div class="stat-label">Countries</div></div>
         </div>
 
         <div class="deadlines">
@@ -1631,6 +1631,246 @@
             </div>
         </div>
 
+        <!-- OTHER - BUCKET LIST -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Other - Bucket List<span>Once-in-a-lifetime experiences worth attending</span></h2>
+            </div>
+            <div class="cards">
+                <div class="card" data-event="Sun Valley Conference" data-date="Jul 7-11">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80');">
+                        <span class="card-badge">Invite Only</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Allen & Co Sun Valley Conference</h3>
+                        <p class="card-oneliner">"Summer Camp for Billionaires" - where Bezos bought the Washington Post and Disney acquired ABC. The most exclusive gathering of tech, media, and finance titans.</p>
+                        <div class="card-meta">
+                            <span>Jul 7-11, 2026</span>
+                            <span>Sun Valley, Idaho</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Attendees</span><span>~300 (Invite Only)</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Past Guests</span><span>Gates, Buffett, Zuckerberg</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>The Dream</h4>
+                            <p>Get invited through Forbes 30U30 network or WEF Young Global Leaders. Ultimate networking.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://en.wikipedia.org/wiki/Allen_%26_Company_Sun_Valley_Conference" class="btn btn-primary" target="_blank">Learn More</a>
+                            <a href="https://www.allenco.com/" class="btn btn-secondary" target="_blank">Allen & Co</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Total Solar Eclipse" data-date="Aug 12">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1532693322450-2cb5c511067d?w=800&q=80');">
+                        <span class="card-badge">Cosmic Event</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Total Solar Eclipse 2026</h3>
+                        <p class="card-oneliner">A rare sunset eclipse visible from Iceland, Greenland, and Spain. Arctic expeditions offer front-row seats to one of nature's greatest spectacles.</p>
+                        <div class="card-meta">
+                            <span>Aug 12, 2026</span>
+                            <span>Iceland / Greenland / Spain</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Best View</span><span>Scoresby Sund, Greenland</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Bonus</span><span>Perseid Meteor Shower same night</span></div>
+                        </div>
+                        <div class="speakers-box">
+                            <h4>Notable Expeditions</h4>
+                            <p>National Geographic-Lindblad, HX Expeditions to Greenland, Bill Nye Spain tour (sold out)</p>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Experience</h4>
+                            <p>Combine with Iceland Eclipse Festival (Aug 12-15). Once-in-a-lifetime astronomical event.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.space.com/stargazing/solar-eclipses/10-fun-tours-and-adventures-for-the-ultimate-total-solar-eclipse-2026-experience" class="btn btn-primary" target="_blank">Tours</a>
+                            <a href="https://www.eclipsetours.com/" class="btn btn-secondary" target="_blank">Eclipse Tours</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Burning Man" data-date="Aug 30 - Sep 7">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1504699605615-7e99506652e5?w=800&q=80');">
+                        <span class="card-badge">Transformative</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Burning Man 2026</h3>
+                        <p class="card-oneliner">The legendary gathering in Nevada's Black Rock Desert - a week of radical self-expression, art, and community that tech billionaires secretly attend.</p>
+                        <div class="card-meta">
+                            <span>Aug 30 - Sep 7, 2026</span>
+                            <span>Black Rock City, Nevada</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Population</span><span>~80,000 "Burners"</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Ticket</span><span>~$575 (lottery)</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Experience</h4>
+                            <p>Elon Musk, Larry Page, Sergey Brin attend. Radical networking in a radical environment.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://burningman.org/" class="btn btn-primary" target="_blank">Official Site</a>
+                            <a href="https://burningman.org/event/preparation/first-timers-guide/" class="btn btn-secondary" target="_blank">First Timer</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Cannes Film Festival" data-date="May 13-24">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?w=800&q=80');">
+                        <span class="card-badge">Glamour</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Cannes Film Festival 2026</h3>
+                        <p class="card-oneliner">The world's most prestigious film festival - red carpets, yacht parties, and the intersection of art, celebrity, and wealth on the French Riviera.</p>
+                        <div class="card-meta">
+                            <span>May 13-24, 2026</span>
+                            <span>Cannes, France</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Founded</span><span>1946</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Top Prize</span><span>Palme d'Or</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Experience</h4>
+                            <p>Combine with Monaco GP (Jun 4-7). Ultimate Riviera experience. Yacht party networking.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.festival-cannes.com/en/" class="btn btn-primary" target="_blank">Official</a>
+                            <a href="https://www.festival-cannes.com/en/infos-guests" class="btn btn-secondary" target="_blank">Guest Info</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="Art Basel Miami" data-date="Dec 4-6">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1578926288207-a90a5366759d?w=800&q=80');">
+                        <span class="card-badge">Art World</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Art Basel Miami Beach 2026</h3>
+                        <p class="card-oneliner">The Americas' premier art fair - where collectors, galleries, and celebrities converge for a week of art, parties, and cultural excess.</p>
+                        <div class="card-meta">
+                            <span>Dec 4-6, 2026</span>
+                            <span>Miami Beach, FL</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Galleries</span><span>280+ from 35 countries</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Visitors</span><span>80,000+</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Experience</h4>
+                            <p>Same week as Abu Dhabi GP. Art world's biggest collectors. Legendary parties at Faena, Soho Beach House.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.artbasel.com/miami-beach" class="btn btn-primary" target="_blank">Tickets</a>
+                            <a href="https://www.artbasel.com/miami-beach/about" class="btn btn-secondary" target="_blank">About</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-event="The Masters" data-date="Apr 9-12">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&q=80');">
+                        <span class="card-badge">Tradition</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">The Masters Tournament 2026</h3>
+                        <p class="card-oneliner">Golf's most prestigious major at Augusta National - the hardest ticket in sports and the ultimate symbol of exclusive access.</p>
+                        <div class="card-meta">
+                            <span>Apr 9-12, 2026</span>
+                            <span>Augusta, Georgia</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="card-details-row"><span class="card-details-label">Patrons</span><span>~40,000/day (lottery)</span></div>
+                            <div class="card-details-row"><span class="card-details-label">Prize</span><span>The Green Jacket</span></div>
+                        </div>
+                        <div class="card-why">
+                            <h4>Why Experience</h4>
+                            <p>CEOs, athletes, celebrities all attend. Pimento cheese sandwiches for $1.50. Pure sporting tradition.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.masters.com/en_US/tickets/index.html" class="btn btn-primary" target="_blank">Lottery</a>
+                            <a href="https://www.masters.com/" class="btn btn-secondary" target="_blank">Official</a>
+                        </div>
+                        <div class="priority-selector">
+                            <button class="priority-btn high" onclick="setPriority(this, 'high')">High</button>
+                            <button class="priority-btn medium" onclick="setPriority(this, 'medium')">Medium</button>
+                            <button class="priority-btn low" onclick="setPriority(this, 'low')">Low</button>
+                        </div>
+                        <div class="attendance-selector">
+                            <button class="attendance-btn speak" onclick="setAttendance(this, 'speak')">Speak</button>
+                            <button class="attendance-btn guest" onclick="setAttendance(this, 'guest')">Guest</button>
+                        </div>
+                        <div class="notes-section">
+                            <textarea placeholder="Why I want to attend..." onchange="saveNote(this)"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="timeline">
             <h2>2026 Calendar</h2>
             <div class="timeline-grid">
@@ -1640,8 +1880,8 @@
                 <div class="month has-event"><strong>APR</strong><div class="month-events">TED, AAN, Forbes</div></div>
                 <div class="month has-event"><strong>MAY</strong><div class="month-events">ATM, Milken, BEYOND</div></div>
                 <div class="month has-event"><strong>JUN</strong><div class="month-events">Monaco, SLEEP, Amsterdam</div></div>
-                <div class="month has-event"><strong>JUL</strong><div class="month-events">AOSSM, Wimbledon, Mayo</div></div>
-                <div class="month"><strong>AUG</strong></div>
+                <div class="month has-event"><strong>JUL</strong><div class="month-events">Sun Valley, Wimbledon</div></div>
+                <div class="month has-event"><strong>AUG</strong><div class="month-events">Eclipse, Burning Man</div></div>
                 <div class="month has-event"><strong>SEP</strong><div class="month-events">Skift, Health Opt</div></div>
                 <div class="month has-event"><strong>OCT</strong><div class="month-events">Sleep Europe, Spa Awards</div></div>
                 <div class="month has-event"><strong>NOV</strong><div class="month-events">SfN, HLTH, GWS</div></div>
