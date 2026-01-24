@@ -355,10 +355,34 @@
             color: var(--text-muted);
         }
 
-        .panel-toggle {
+        .bottom-buttons {
             position: fixed;
             bottom: 24px;
             right: 24px;
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .export-btn {
+            padding: 12px 20px;
+            background: #22c55e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+            transition: all 0.2s;
+        }
+
+        .export-btn:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+
+        .panel-toggle {
             background: var(--accent);
             color: var(--bg);
             border: none;
@@ -1894,9 +1918,14 @@
         </div>
     </div>
 
-    <button class="panel-toggle" onclick="togglePanel()">
-        Priorities <span class="count" id="totalCount">0</span>
-    </button>
+    <div class="bottom-buttons">
+        <button class="export-btn" onclick="exportToExcel()">
+            Export to Excel
+        </button>
+        <button class="panel-toggle" onclick="togglePanel()">
+            Priorities <span class="count" id="totalCount">0</span>
+        </button>
+    </div>
 
     <div class="priority-panel hidden" id="priorityPanel">
         <h3>My Priorities</h3>
@@ -2043,6 +2072,55 @@
                 card.classList.remove('priority-high-selected', 'priority-medium-selected', 'priority-low-selected');
                 card.querySelector('.notes-section textarea').value = '';
             });
+        }
+
+        function exportToExcel() {
+            const cards = document.querySelectorAll('.card[data-event]');
+            const rows = [['Event', 'Date', 'Location', 'Priority', 'Attendance', 'Notes']];
+
+            cards.forEach(card => {
+                const eventName = card.dataset.event;
+                const eventDate = card.dataset.date || '';
+                const locationEl = card.querySelector('.card-meta span:last-child');
+                const location = locationEl ? locationEl.textContent : '';
+
+                // Get priority
+                let priority = '';
+                if (priorities.high.some(e => e.name === eventName)) priority = 'High';
+                else if (priorities.medium.some(e => e.name === eventName)) priority = 'Medium';
+                else if (priorities.low.some(e => e.name === eventName)) priority = 'Low';
+
+                // Get attendance
+                const att = attendance[eventName] || '';
+                const attendanceType = att ? att.charAt(0).toUpperCase() + att.slice(1) : '';
+
+                // Get notes
+                const note = notes[eventName] || '';
+
+                // Only include events that have at least one selection
+                if (priority || attendanceType || note) {
+                    rows.push([
+                        eventName,
+                        eventDate,
+                        location,
+                        priority,
+                        attendanceType,
+                        note.replace(/"/g, '""')
+                    ]);
+                }
+            });
+
+            // Convert to CSV
+            const csv = rows.map(row =>
+                row.map(cell => `"${cell}"`).join(',')
+            ).join('\n');
+
+            // Download
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `conference_selections_${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
         }
     </script>
 </body>
